@@ -45,7 +45,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     [actors.py](models/actor.py) - Defines the actor table  
     [genres.py](modeles/genre.py) - Defines the genre table  
 
-    **models/engine** directory conataining the storage engine for the project
+    **models/engine** directory conataining the storage engine for the project  
     [dbstorage.py](models/engine/dbstorage.py): Connnects to the database and contain all features needed to access the database
     - `def __init__(self)` - Initialize the database
     - `def all(self, cls=None)` - Returns all models or a particular model if cls is not None
