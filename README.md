@@ -14,7 +14,7 @@ The console is the first segment of the movie recommendation project. It is a co
 - **[Environment](#environment)**
 - **[The console](#the-console-1)**
     - **[Installation](#installation-of-console)**
-    - **File Descriptions**
+    - **[File Descriptions](#file-description)**
     - **Usage**
 
 ## Environment
@@ -41,6 +41,6 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - `def save(self)` - update the attribute updated_at which tells the last time the model was updated
     - `def to_dict(self)` - Convert the model into dictionary object  
 
-    [user.py](user.py): Defines the user table  
-    [actors.py](actor.py): Defines the actor table  
-    [genres.py](genre.py): Defines the genre table  
+    [user.py](user.py) - Defines the user table  
+    [actors.py](actor.py) - Defines the actor table  
+    [genres.py](genre.py) - Defines the genre table  
