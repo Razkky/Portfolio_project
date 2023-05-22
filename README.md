@@ -22,5 +22,5 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
 
 ## Installation of console
 - Clone this repo: `git clone https://github.com/Razkky/Portfolio_project.git`
-- Navigate to the directory `movie_project`
+- Navigate to the directory `cd movie_project`
 - Run the console interpreter `./console.py` and enter command
