@@ -27,9 +27,9 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - Run the console interpreter `./console.py` and enter command
 - ## File Description
     console.py: The entry point of the command interpreter. This commands supported by this console includes
-    - `**EOF**` - exit the console
-    - `**quit**` - exit the console
-    - `**create**` - create new instance of a model
-    - `**update**` - update any instance of a model base on its id
-    - `**destroy**` - destroy any instance of a model base on its id
-    - `**all**` - print all models 
+    - `EOF` - exit the console
+    - `quit` - exit the console
+    - `create` - create new instance of a model
+    - `update` - update any instance of a model base on its id
+    - `destroy` - destroy any instance of a model base on its id
+    - `all` - print all models 
