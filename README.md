@@ -17,10 +17,11 @@ The console is the first segment of the movie recommendation project. It is a co
     - **File Descriptions**
     - **Usage**
 
-## Environment
+## The console
+- ## Environment
 This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Version 3.10)
 
-## Installation of console
+- ## Installation of console
 - Clone this repo: `git clone https://github.com/Razkky/Portfolio_project.git`
 - Navigate to the directory `cd movie_project`
 - Run the console interpreter `./console.py` and enter command
