@@ -37,6 +37,14 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     [User] [4] {'password': 'kkk', 'username': 'mrcapble', 'created_at': datetime.datetime(2023, 5, 21, 14, 41, 14), 'name': 'waliy', 'email': 'waliyu.com', 'id': 4, 'updated_at': datetime.datetime(2023, 5, 21, 14, 41, 32)}
     [User] [5] {'password': 'kkkkk', 'username': 'rouky', 'created_at': datetime.datetime(2023, 5, 21, 15, 29, 54), 'name': 'farouk', 'email': 'farouk@gmail.com', 'id': 5, 'updated_at': datetime.datetime(2023, 5, 21, 15, 29, 54)}
     [User] [7] {'password': 'rouky', 'username': 'farouk', 'created_at': datetime.datetime(2023, 5, 22, 10, 9, 19), 'name': 'Farouk', 'email': 'faroukabu@gmail.com', 'id': 7, 'updated_at': datetime.datetime(2023, 5, 22, 10, 9, 19)}
+    (Movies) show User 7
+    ['User', '7']
+    {'password': 'rouky', 'username': 'farouk', 'created_at': '2023-05-22T10:09:19', 'name': 'Farouk', 'email': 'faroukabu@gmail.com', 'id': 7, 'updated_at': '2023-05-22T10:09:19', 'genres': [], 'actors': [], '__class__': 'User'}
+    (Movies) destroy User 7
+    (Movies) all User
+    [User] [4] {'password': 'kkk', 'username': 'mrcapble', 'created_at': datetime.datetime(2023, 5, 21, 14, 41, 14), 'name': 'waliy', 'email': 'waliyu.com', 'id': 4, 'updated_at': datetime.datetime(2023, 5, 21, 14, 41, 32)}
+    [User] [5] {'password': 'kkkkk', 'username': 'rouky', 'created_at': datetime.datetime(2023, 5, 21, 15, 29, 54), 'name': 'farouk', 'email': 'farouk@gmail.com', 'id': 5, 'updated_at': datetime.datetime(2023, 5, 21, 15, 29, 54)}
+    (Movies)
     ```
 ## File Description
 [console.py](console.py): The entry point of the command interpreter. This commands supported by this console includes
