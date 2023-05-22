@@ -33,3 +33,9 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - `update` - update any instance of a model base on its id
     - `destroy` - destroy any instance of a model base on its id
     - `all` - print all models 
+    **models/** directory containing all the models for the project
+    [base.py](base.py): The BaseModel which contains the feature that all other classes inherit
+    - `def __init__(self, *args, **kwargs)` - Initialize the model
+    - `def __str__(self)` - String representation of the model
+    - `def save(self)` - update the attribute updated_at which tells the last time the model was updated
+    - `def to_dict(self)` - Convert the model into dictionary object
