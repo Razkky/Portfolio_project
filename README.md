@@ -34,7 +34,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - `destroy` - destroy any instance of a model base on its id.
     - `all` - print all models.
 
-    **models/** directory containing all the models for the project:
+    **models/** directory containing all the models for the project:  
     [base.py](base.py): The BaseModel which contains the feature that all other classes inherit. 
     - `def __init__(self, *args, **kwargs)` - Initialize the model
     - `def __str__(self)` - String representation of the model
