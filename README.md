@@ -14,8 +14,9 @@ The console is the first segment of the movie recommendation project. It is a co
 - **[Environment](#environment)**
 - **[The console](#the-console-1)**
     - **[Installation](#installation-of-console)**
-    - **[File Descriptions](#file-description)**
+    
     - **Usage**
+- **[File Descriptions](#file-description)**
 
 ## Environment
 This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Version 3.10)
@@ -25,7 +26,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - Clone this repo: `git clone https://github.com/Razkky/Portfolio_project.git`
     - Navigate to the directory `cd movie_project`
     - Run the console interpreter `./console.py` and enter command
-- ## File Description
+- ## Methods
     [console.py](console.py): The entry point of the command interpreter. This commands supported by this console includes
     - `EOF` - exit the console.
     - `quit` - exit the console.
