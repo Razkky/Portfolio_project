@@ -12,7 +12,7 @@ The console is the first segment of the movie recommendation project. It is a co
 
 ## Table of Content
 - **[Environment](#environment)**
-- The console
+- **The console**
     - **[Installation](#installation-of-console)**
     - **File Descriptions**
     - **Usage**
