@@ -9,3 +9,10 @@ The console is the first segment of the movie recommendation project. It is a co
 - Retrieve all object from database
 - Update an object using the object id
 - Destroy and object using the object id
+
+## Table of Content
+- The console
+    - Environment
+    - Installation
+    - File Descriptions
+    - Usage
