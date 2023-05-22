@@ -40,3 +40,6 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - `def __str__(self)` - String representation of the model
     - `def save(self)` - update the attribute updated_at which tells the last time the model was updated
     - `def to_dict(self)` - Convert the model into dictionary object
+    [user.py](user.py): Defines the user table
+    [actors.py](actor.py): Defines the actor table
+    [genres.py](genre.py): Defines the genre table
