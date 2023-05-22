@@ -11,11 +11,11 @@ The console is the first segment of the movie recommendation project. It is a co
 - Destroy and object using the object id
 
 ## Table of Content
-- Environment
+- *[Environment](#environment)
 - The console
-    - [Installation](#Installation of console)
-    - File Descriptions
-    - Usage
+    - *[Installation](#installation-of-console)
+    - *File Descriptions
+    - *Usage
 
 ## Environment
 This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Version 3.10)
