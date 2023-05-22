@@ -27,15 +27,15 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - Run the console interpreter `./console.py` and enter command
 - ## File Description
     [console.py](console.py): The entry point of the command interpreter. This commands supported by this console includes
-    - `EOF` - exit the console
-    - `quit` - exit the console
-    - `create` - create new instance of a model
-    - `update` - update any instance of a model base on its id
-    - `destroy` - destroy any instance of a model base on its id
-    - `all` - print all models 
+    - `EOF` - exit the console.
+    - `quit` - exit the console.
+    - `create` - create new instance of a model.
+    - `update` - update any instance of a model base on its id.
+    - `destroy` - destroy any instance of a model base on its id.
+    - `all` - print all models.
 
-    **models/** directory containing all the models for the project
-    [base.py](base.py): The BaseModel which contains the feature that all other classes inherit
+    **models/** directory containing all the models for the project:
+    [base.py](base.py): The BaseModel which contains the feature that all other classes inherit.
     - `def __init__(self, *args, **kwargs)` - Initialize the model
     - `def __str__(self)` - String representation of the model
     - `def save(self)` - update the attribute updated_at which tells the last time the model was updated
