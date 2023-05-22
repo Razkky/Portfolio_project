@@ -25,7 +25,19 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - Clone this repo: `git clone https://github.com/Razkky/Portfolio_project.git`
     - Navigate to the directory `cd movie_project`
     - Run the console interpreter `./console.py` and enter command
-
+- ## Usage
+    ```
+    (Movies) help
+    2
+    (Movies) create User name=Farouk email=faroukabu@gmail.com username=farouk password=rouky
+    Farouk
+    (Movies) count User
+    3
+    (Movies) all User
+    [User] [4] {'password': 'kkk', 'username': 'mrcapble', 'created_at': datetime.datetime(2023, 5, 21, 14, 41, 14), 'name': 'waliy', 'email': 'waliyu.com', 'id': 4, 'updated_at': datetime.datetime(2023, 5, 21, 14, 41, 32)}
+    [User] [5] {'password': 'kkkkk', 'username': 'rouky', 'created_at': datetime.datetime(2023, 5, 21, 15, 29, 54), 'name': 'farouk', 'email': 'farouk@gmail.com', 'id': 5, 'updated_at': datetime.datetime(2023, 5, 21, 15, 29, 54)}
+    [User] [7] {'password': 'rouky', 'username': 'farouk', 'created_at': datetime.datetime(2023, 5, 22, 10, 9, 19), 'name': 'Farouk', 'email': 'faroukabu@gmail.com', 'id': 7, 'updated_at': datetime.datetime(2023, 5, 22, 10, 9, 19)}
+    ```
 ## File Description
 [console.py](console.py): The entry point of the command interpreter. This commands supported by this console includes
 - `EOF` - exit the console.
