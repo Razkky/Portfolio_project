@@ -34,7 +34,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
 - `do_update(self, arg)` - update any instance of a model base on its id.
 - `do_destroy(self, arg)` - destroy any instance of a model base on its id.
 - `do_all(self, arg)` - print all models.
-- `do_count(self, arg)` - Count all object of a particular model
+- `do_count(self, arg)` - Count all object of a particular model  
 **models/** directory containing all the models for the project:  
 [base.py](models/base.py): The BaseModel which contains the feature that all other classes inherit. 
 - `def __init__(self, *args, **kwargs)` - Initialize the model
