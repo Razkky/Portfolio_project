@@ -35,12 +35,25 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - `all` - print all models.
 
     **models/** directory containing all the models for the project:  
-    [base.py](base.py): The BaseModel which contains the feature that all other classes inherit. 
+    [base.py](models/base.py): The BaseModel which contains the feature that all other classes inherit. 
     - `def __init__(self, *args, **kwargs)` - Initialize the model
     - `def __str__(self)` - String representation of the model
     - `def save(self)` - update the attribute updated_at which tells the last time the model was updated
     - `def to_dict(self)` - Convert the model into dictionary object  
 
-    [user.py](user.py) - Defines the user table  
-    [actors.py](actor.py) - Defines the actor table  
-    [genres.py](genre.py) - Defines the genre table  
+    [user.py](models/user.py) - Defines the user table  
+    [actors.py](models/actor.py) - Defines the actor table  
+    [genres.py](modeles/genre.py) - Defines the genre table  
+
+    **models/engine** directory conataining the storage engine for the project
+    [dbstorage.py](models/engine/dbstorage.py): Connnects to the database and contain all features needed to access the database
+    - `def __init__(self)` - Initialize the database
+    - `def all(self, cls=None)` - Returns all models or a particular model if cls is not None
+    - `def new(self, obj)` - Add new object to the database
+    - `def save(self)` - commits object to the database
+    - `def delete(self, obj=None)` - Delete an object from the database
+    - `def reload(self)`- Reload contents of the database
+    - `def get(seld, id)` Get an object from the database using its id
+    - `def close(self)` - Close the database after every request
+
+
