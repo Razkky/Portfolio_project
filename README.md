@@ -80,7 +80,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
 - `def save(self)` - commits object to the database
 - `def delete(self, obj=None)` - Delete an object from the database
 - `def reload(self)`- Reload contents of the database
-- `def get(seld, id)` Get an object from the database using its id
+- `def get(seld, model id)` Get an object from the database using its id
 - `def close(self)` - Close the database after every request
 
 
