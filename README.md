@@ -26,7 +26,7 @@ This project is interpreted/tested/installed on Ubuntu 22.04 using python3(Versi
     - Navigate to the directory `cd movie_project`
     - Run the console interpreter `./console.py` and enter command
 - ## File Description
-    console.py: The entry point of the command interpreter. This commands supported by this console includes
+    [console.py](console.py): The entry point of the command interpreter. This commands supported by this console includes
     - `EOF` - exit the console
     - `quit` - exit the console
     - `create` - create new instance of a model
