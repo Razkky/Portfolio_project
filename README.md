@@ -14,7 +14,7 @@ The console is the first segment of the movie recommendation project. It is a co
 - **[Environment](#environment)**
 - **[The console](#the-console-1)**
     - **[Installation](#installation-of-console)**
-    - **Usage**
+    - **[Usage](#usage)**
 - **[File Descriptions](#file-description)**
 
 ## Environment
