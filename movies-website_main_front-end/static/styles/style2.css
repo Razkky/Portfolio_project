@@ -1,0 +1,260 @@
+
+    
+.btn_container {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+    
+
+:root {
+    --color-primary: #6c63ff;
+    --color-success: #00bf8e;
+    --color-warning:#f7c94b;
+    --color-danger: #f75842;
+    --color-danger-variant: rgba(247,88,66,0.4);
+    --color-white: #fff;
+    --color-light: rgba(255,255,255,0.7);
+    --color-black: #000;
+    --color-bg: #1f2641;
+    --color-bg1: #2e3267;
+    --color-bg2: #424890;
+
+    --container-width-lg: 80%;
+    --container-width-md: 90%;
+    --container-width-sm: 94%;
+
+    --transistion: all 400ms ease
+
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-white);
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container_btn h1 {
+    font-size: 55px;
+    text-align: center;
+}
+#nav_img {
+    object-fit: contain;
+    height: 6vh;
+}
+.container {
+    height: 5vh;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+}
+.container > div > h1 {
+    font-size: 30px;
+    margin-left: 20px;
+    color: red;
+}
+.container > div {
+    display: flex;
+    align-items: center;
+}
+.container > ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.nav_menu {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-right: 10px;
+    list-style-type: none;
+}
+
+.nav_menu a {
+    font-size: 17px;
+    font-weight: 100;
+    color:white;
+    transition: all 400ms ease;
+    
+}
+
+.btn {
+    margin: 0 5px;
+    padding: 5px 12px;
+    font-size: 13px;
+    color: white;
+    background: red;
+    border: 0;
+    border-radius: 2.5px;
+}
+
+.btn:hover {
+    background: rgb(212, 18, 18);
+    color: white;
+}
+
+
+.container_btn {
+    margin-top: 25vh;
+    padding: auto;
+    background: transparent;
+}
+h2 {
+    text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 40px;
+    color:white;
+}
+h3 {
+    text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 15px;
+    color: white;
+    font-weight: 500;
+}
+h4 {
+   text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 20px;
+    color:white; 
+}
+
+form.btn_container input[type=text] {
+    padding: 15px;
+    width: 500px;
+    height: 15px;
+    font-size: 17px;
+    border-radius: 5px;
+    color: white;
+    border: 2px solid gray;
+    margin: 0;
+    background: transparent;
+    align-items: center;
+}
+form.btn_container button {
+    width: 150px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    background: red;
+    border: 1px solid grey;
+    font-size: 17px;
+    border-left: none;
+    border-radius: 5px;
+    transition: var(--transistion);
+    cursor: pointer;
+
+}
+
+form.btn_container button:hover {
+    background: rgb(212, 18, 18);
+}
+
+.title__image {
+    width: 100%;
+}
+
+.movie {
+    width: 300px;
+    height: fit-content;
+    background-color: white;
+    color: #000;
+    margin: 10px;
+}
+.movie_img {
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
+    margin: 0;
+    padding: 0;
+}
+.movie_div {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.movie_div > h1:last-child{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    margin: 0;
+    margin-right: 8px;
+    text-decoration: none;
+    padding: 0;
+    color: #000;
+    text-align: end;
+    align-items: center;
+}
+.movie_div > h1:first-child {
+    margin-top: 20px;
+    margin-left: 20px;
+    font-size: 13px;
+    margin: 0;
+    margin-left: 5px;
+    color: #000;
+    text-decoration: none;
+    
+    padding-right: 19px;
+    text-align: start;
+    align-items: start;
+}
+.movie > h3 {
+    margin: 5px;
+    padding: 0;
+    margin-left: 5px;
+    text-align: start;
+    align-items: start;
+    color: #000;
+}
+.ova_d {
+    display:none;
+    margin: 10px;
+    background: white;
+    color: #000;
+    transition: var(--transistion);
+    margin-top: 0;
+}
+
+.movie:hover .ova_d {
+    background: white;
+    display: block;
+    color: #000;
+    
+}
+
+
+.movie_button {
+    margin-left: 25%;
+    margin-bottom: 15px;
+    width: 50%;
+    height: 30px;
+    font-size: 14px;
+}
+.section_one{
+    background: url(../Images/razy1.jpg);
+    height: 100vh;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,1));
+}
+.section_two {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    margin-top: -75px;
+    flex-wrap: wrap;
+    background: #000;
+}

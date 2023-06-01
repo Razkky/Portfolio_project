@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+body {
+    background: url(../Images/razy1.jpg);
+}
+
+.container {
+    width: 360px;
+    height: 580px;
+    margin: auto;
+    background-color: white;
+    border-radius: 3px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+
+}
+
+.login_box {
+    width: 360px;
+    height: 360px;
+    margin: auto;
+    background: white;
+    margin-top: 40px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;
+} 
+
+h4 {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+a{
+    color: rgb(223, 149, 12);
+    font-size: 12px;
+}
+
+
+
+form {
+    width: 300px;
+    margin-left: 25px;
+}
+
+form label {
+    display: flex;
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+form input {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border: 2px solid rgb(165, 152, 152);
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type="button"] {
+    width: 320px;
+    padding: 5px;
+    margin-top: 25px;
+    height: 35px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    transition: all 0.3s;
+}
+
+input[type="button"]:hover {
+    background: red;
+    color: white;
+    font-size: 20px;
+}
+
+p{
+    text-align: center;
+    padding-top: 15px;
+    font-size: 15px;
+}
+
+.para_2 {
+    text-align: center;
+    color: black;
+    font-size: 15px;
+    margin-top: 10px;
+    padding-top: 5px;
+}
+

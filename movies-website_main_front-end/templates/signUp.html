@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My login details</title>
+  </head>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script
+    type="text/javascript"
+    src="static/scripts/signup.js?{{ cache_id }}"
+  ></script>
+  <link rel="stylesheet" href="static/styles/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Nanum+Gothic:wght@400;700&family=Playfair:wght@300&family=Quicksand:wght@300;400;500&family=Roboto:wght@500;700&display=swap"
+    rel="stylesheet"
+  />
+  <body>
+    <div class="container">
+      <h1>Sign up</h1>
+      <h4>it's free and takes few time</h4>
+      <form>
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Name" />
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Email" />
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Username" />
+        <label>Password</label>
+        <input type="password" id="password" placeholder="password" />
+        <label>Confirm Password</label>
+        <input type="password" id="password1" placeholder="password" />
+        <input type="button" value="Submit" />
+      </form>
+      <p class="para_2">
+        Already have an account? <br /><a href="login.html">login here</a>
+      </p>
+
+      <p>
+        By clicking sign up , you agree to our <br /><a href="#"
+          >Terms and Condtions</a
+        >
+      </p>
+    </div>
+  </body>
+</html>

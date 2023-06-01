@@ -3,23 +3,17 @@
 <html>
 <head>
   <header class="normal smaller no_animation smaller subtle nav-down">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript"
+             src="static/scripts/index.js?{{ cache_id }}">
+    </script>
+  <link rel="stylesheet" href="static/styles/body.css" />
+  <link rel="stylesheet" href="static/styles/header.css" />
     <div class="content">
       <div class="sub_media">
         <div class="nav_wrapper">
             <a class="logo" href="/">
-    <style>
-        body {
-          background-color: #ffffff;
-          color: #000;
-        }
-      </style>
   <title>Movie Zone </title>
-  <style>
-    h1 {
-      text-align: center;
-    }
-  </style>
-
   <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
   <script src="bootstrap.min.js"></script>
 </head>
@@ -28,28 +22,13 @@
     <h1>Movie Zone</h1>
           
       <div class="nav-item login-details">
-        <style>
-          .container {
-            position: relative;
-          }
-          
-          .top-right {
-            position: absolute;
-            top: 0:
-            right: 0;
-          }
-          
-          .container a {
-            margin-left: 10px;
-          }
-        </style>
       </head>
       <body>
         <div style="text-align: right;">
             <header>
               <ul>
                 <li><img src="static/banner.jpg" alt="logo"></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a id="login" src="/login">Login</a></li>
                 <li><a href="register.html">Register</a></li>
                 <li><a href="contactus.html">Contact_Us</a></li>
               </ul>
@@ -69,80 +48,6 @@
 </head>
 
 <body>
-    <!-- css style here -->
-    <style>
-        body {
-            background: gray;
-            font-family: 'Roboto Mono', monospace;
-            text-align: right
-        }
-
-        header
-        {
-
-          background-color: green;
-          padding: .2px;
-          box-shadow: .3px;
-        }
-        header li
-        {
-          
-          display: inline;
-          padding-left: 10px;          
-        }
-        header li img
-        {
-
-          width: 150px;
-          float: left;
-          margin-top: -70px;
-        }
-        header li a
-        {
-          color: black;
-          text-decoration: none;
-          padding: 13px;
-          transition: .3s ease;
-        }
-        header li a:hover
-        {
-          color: green;
-
-        }
-
-        header ul #Contact_Us a
-        {
-          color: #fff;
-          background-color: royalblue;
-          border-radius: 30px;
-          float: right;
-          position; relative;
-          top: -15px;
-        }
-        
-        .movie-card {
-            width: 300px;
-            height: auto;
-            background: white;
-            padding: 12px;
-            align-self: center;
-            border-radius: 2px;
-            box-shadow: 2px 2px 4px #867475;
-            margin: 12px;
-        }
-        
-        .movie-list-container {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-        
-        img {
-            max-width: 100%;
-        }
-    </style>
-
     <section>
         <div class="movie-list-container">
             {% for movie in data %}
