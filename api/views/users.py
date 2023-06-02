@@ -31,12 +31,41 @@ def token_required(f):
 
 @app_view.route('/users', methods=['GET'], strict_slashes=False)
 def get_users():
-    print("getting all users")
     """Return list of all users"""
     users_list = []
     all_users = storage.all(User)
     for user in all_users.values():
-        users_list.append(user.to_dict())
+        print(user)
+        user_dict = {
+            "id": user.id,
+            "name": user.name,
+            "email": user.email,
+            "username": user.username,
+            "password": user.password,
+            "actors": [],
+            "genres": []
+        }
+        actors = user.actors
+        print("printing actors")
+        print(actors)
+        genres = user.genres
+        for actor in actors:
+            #Create a dictionary with actor details
+            actor_dict = {
+                "id": actor.id,
+                "name": actor.name,
+                "user_id": actor.user_id
+            }
+            user_dict['actors'].append(actor_dict)
+        for genre in genres:
+            #Create a dictionary with genre details
+            genre_dict = {
+                "id": genre.id,
+                "name": genre.name,
+                "user_id": genre.user_id
+            }
+            user_dict['genres'].append(genre_dict)
+        users_list.append(user_dict)
     return jsonify(users_list)
 
 @app_view.route('/login', methods=["POST"], strict_slashes=False)

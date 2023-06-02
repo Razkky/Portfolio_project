@@ -71,7 +71,7 @@ class DBStorage:
         DBStorage.__session = scoped_session(Session)()
 
     def get(self, model, email):
-        """Get a model with a particular id"""
+        """Get a model with a particular email"""
         if model == User:
             model = DBStorage.__session.query(model).options(
                     joinedload(User.actors)).options(
@@ -79,6 +79,19 @@ class DBStorage:
         else:
             model = DBStorage.__session.query(model).filter(
                     model.email == email).one()
+        if not model:
+            return None
+        return model
+
+    def get_by_id(self, model, id):
+        """Get a model with a particular id"""
+        if model == User:
+            model = DBStorage.__session.query(model).options(
+                    joinedload(User.actors)).options(
+                    joinedload(User.genres)).filter(model.id == id).one()
+        else:
+            model = DBStorage.__session.query(model).filter(
+                    model.id == id).one()
         if not model:
             return None
         return model

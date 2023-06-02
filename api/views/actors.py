@@ -16,7 +16,7 @@ def get_actors():
 @app_view.route('/actor/<int:id>', methods=["GET"], strict_slashes=False)
 def get_actor(id):
     """Retrieve a particular actor with id"""
-    actor = storage.get(Actor, id).to_dict()
+    actor = storage.get_by_id(Actor, id).to_dict()
     return make_response(jsonify(actor), 200)
 
 @app_view.route('/actor/', methods=["POST"], strict_slashes=False)
@@ -36,7 +36,7 @@ def create_actor():
 @app_view.route('/actor/<int:id>', methods=["DELETE"], strict_slashes=False)
 def delete_actor(id):
     """Delete an actor from the database"""
-    actor = storage.get(Actor, id)
+    actor = storage.get_by_id(Actor, id)
     storage.delete(actor)
     storage.save()
     return make_response(jsonify({}), 200)

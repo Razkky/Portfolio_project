@@ -2,6 +2,7 @@
 """A console for the movie Recommendation Project"""
 
 import cmd
+from werkzeug.security import generate_password_hash
 from models.base import BaseModel
 from models.user import User
 from models.actors import Actor
@@ -49,6 +50,8 @@ class MovieCommand(cmd.Cmd):
             print("**Invalid model**")
         else:
             model = MovieCommand.classes[model](**new_dict)
+            model.password = generate_password_hash(model.password)
+            print(model.password)
             print(model.name)
             storage.new(model)
             storage.save()
@@ -137,9 +140,8 @@ class MovieCommand(cmd.Cmd):
         else:
             models = storage.all().values()
             model = MovieCommand.get_instance(models, id)
-            if model not in ["id", "updated_at", "created_at"]:
-                setattr(model, attr, value)
-                storage.save()
+            setattr(model, attr, value)
+            storage.save()
 
     def get_instance(models, id):
         """Get a particular instance of a model using the id"""

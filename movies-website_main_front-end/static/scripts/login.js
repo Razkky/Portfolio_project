@@ -32,7 +32,8 @@ $('document').ready(function () {
                     success: function(response2){
                         console.log('fetching user')
                         console.log(response2)
-                        window.location.href = '/'
+                        localStorage.setItem("User", JSON.stringify(response2))
+                        window.location.href = '/dashboard'
                         
                     }
                 })

@@ -59,5 +59,4 @@ def handle_integrity_error(error):
     return jsonify(error_response), 400
 
 if __name__ == "__main__":
-    print(app.config)
     app.run(host="0.0.0.0", port="5001", threaded=True)

@@ -5,6 +5,7 @@ $('document').ready(function () {
     const movies_url = base_url + '/movie/popular?api_key=' + api_key; 
     const section = document.getElementsByClassName('section_two')[0]
 
+    getMovies(movies_url);
     // get list of movies from TDMB
     function getMovies(url) {
         $.ajax({
@@ -44,7 +45,8 @@ $('document').ready(function () {
         });
     }
     //Search for a movie
-    $('.btn_container button[type="submit"]').click(function() {
+    $('.btn_container button[type="submit"]').click(function(event) {
+        event.preventDefault();
         console.log('clicked')
         const search = $('.btn_container input[type="text"]').val();
         if (search){
@@ -73,5 +75,4 @@ $('document').ready(function () {
         console.log('click')})
 
     
-    getMovies(movies_url);
 })
