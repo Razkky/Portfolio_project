@@ -1,5 +1,7 @@
 """Return a json object of users"""
 from flask import jsonify, make_response, abort, request
+from werkzeug.security import generate_password_hash
+from werkzeug.security import check_password_hash
 from functools import wraps
 from datetime import datetime, timedelta
 from sqlalchemy.orm import joinedload
@@ -31,11 +33,11 @@ def token_required(f):
 
 @app_view.route('/users', methods=['GET'], strict_slashes=False)
 def get_users():
+    print("getting all users")
     """Return list of all users"""
     users_list = []
     all_users = storage.all(User)
     for user in all_users.values():
-        print(user)
         user_dict = {
             "id": user.id,
             "name": user.name,
@@ -46,15 +48,15 @@ def get_users():
             "genres": []
         }
         actors = user.actors
-        print("printing actors")
+        print("PRinting Actors")
         print(actors)
         genres = user.genres
         for actor in actors:
             #Create a dictionary with actor details
+            print(actor)
             actor_dict = {
                 "id": actor.id,
                 "name": actor.name,
-                "user_id": actor.user_id
             }
             user_dict['actors'].append(actor_dict)
         for genre in genres:
@@ -62,10 +64,10 @@ def get_users():
             genre_dict = {
                 "id": genre.id,
                 "name": genre.name,
-                "user_id": genre.user_id
             }
             user_dict['genres'].append(genre_dict)
         users_list.append(user_dict)
+        print(users_list)
     return jsonify(users_list)
 
 @app_view.route('/login', methods=["POST"], strict_slashes=False)
@@ -77,7 +79,7 @@ def login():
     if not user:
         print("no user")
         return make_response(jsonify({"error": "Invalid email or password"}))
-    if user.password == password:
+    if check_password_hash(user.password, password):
         data = {
             'email': user.email,
             'exp': datetime.utcnow() + timedelta(minutes=30)
@@ -116,7 +118,6 @@ def get_user(email):
             actor_dict = {
                 "id": actor.id,
                 "name": actor.name,
-                "user_id": actor.user_id
             }
             user_dict['actors'].append(actor_dict)
         for genre in genres:
@@ -124,7 +125,6 @@ def get_user(email):
             genre_dict = {
                 "id": genre.id,
                 "name": genre.name,
-                "user_id": genre.user_id
             }
             user_dict['genres'].append(genre_dict)
         print("returning")
@@ -149,6 +149,10 @@ def create_user():
         abort(404, "input email")
     # Get json data from user
     data = request.get_json()
+    print(data)
+    password = data['password']
+    hashed_password = generate_password_hash(password)
+    data['password'] = hashed_password
     print("printing data")
     print(data)
     user = User(**data)
@@ -170,6 +174,8 @@ def udpate_user(email):
     user = storage.get(User, email)
     ignore = ['id', 'updated_at', 'created_at']
     for key, value in data.items():
+        if key == 'password':
+            value = generate_password_hash(value)
         setattr(user, key, value)
     user.save()
     storage.save()

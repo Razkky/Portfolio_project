@@ -2,6 +2,7 @@
 
 from models.base import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey, Integer
+from sqlalchemy.orm import relationship
 
 
 class Genre(BaseModel, Base):
@@ -9,4 +10,3 @@ class Genre(BaseModel, Base):
 
     __tablename__ = "genres"
     name = Column(String(60), nullable=True)
-    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)

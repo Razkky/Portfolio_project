@@ -49,9 +49,20 @@ class MovieCommand(cmd.Cmd):
         elif model not in MovieCommand.classes:
             print("**Invalid model**")
         else:
-            model = MovieCommand.classes[model](**new_dict)
-            model.password = generate_password_hash(model.password)
-            print(model.password)
+            if model in ["Actor", "Genre"]:
+                print(new_dict)
+                user = storage.get_by_id(User, new_dict['user_id'])
+                del new_dict['user_id']
+                new_dict['user_id'] = user.id
+                model = MovieCommand.classes[model](**new_dict)
+                if model == "Actor":
+                    user.actors.append(model)
+                else:
+                    user.genres.append(model)
+            else:
+                model = MovieCommand.classes[model](**new_dict)
+                model.password = generate_password_hash(model.password)
+                print(model.password)
             print(model.name)
             storage.new(model)
             storage.save()
@@ -69,7 +80,7 @@ class MovieCommand(cmd.Cmd):
         elif len(new_arg) < 2:
             print("**Instance is missing**")
         else:
-            instance = storage.get(MovieCommand.classes[new_arg[0]], new_arg[1])
+            instance = storage.get_by_id(MovieCommand.classes[new_arg[0]], new_arg[1])
             if instance:
                 print(instance.to_dict())
             if not instance:
@@ -88,7 +99,7 @@ class MovieCommand(cmd.Cmd):
         elif len(new_arg) < 2:
             print("**Instance is missing**")
         else:
-            model = storage.get(MovieCommand.classes[new_arg[0]], new_arg[1])
+            model = storage.get_by_id(MovieCommand.classes[new_arg[0]], new_arg[1])
             if model:
                 storage.delete(model)
                 storage.save()
@@ -140,8 +151,9 @@ class MovieCommand(cmd.Cmd):
         else:
             models = storage.all().values()
             model = MovieCommand.get_instance(models, id)
-            setattr(model, attr, value)
-            storage.save()
+            if model not in ["id", "updated_at", "created_at"]:
+                setattr(model, attr, value)
+                storage.save()
 
     def get_instance(models, id):
         """Get a particular instance of a model using the id"""

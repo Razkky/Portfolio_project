@@ -17,7 +17,7 @@ def get_genres():
 @app_view.route('/genre/<int:id>', methods=["GET"], strict_slashes=False)
 def get_genre(id):
     """Get a genre by its id"""
-    genre = storage.get_by_id(Genre, id).to_dict()
+    genre = storage.get(Genre, id).to_dict()
     return make_response(jsonify(genre), 200)
 
 @app_view.route('/genre', methods=["POST"], strict_slashes=False)
@@ -37,7 +37,7 @@ def create_genre():
 @app_view.route('/genre/<int:id>', methods=["DELETE"], strict_slashes=False)
 def delete_genre(id):
     """Delete a genre from the database"""
-    genre = storage.get_by_id(Genre, id)
+    genre = storage.get(Genre, id)
     storage.delete(genre)
     storage.save()
     return make_response(jsonify({}), 200)

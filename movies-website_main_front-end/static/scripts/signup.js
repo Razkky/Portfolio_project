@@ -5,6 +5,7 @@ $('document').ready(function() {
         const username = $('input#username').val()
         const password = $('input#password').val()
         const password1 = $('input#password1').val()
+        const error = $('#error')
         if (password === password1) {
             data =  {
                 "name": name,
@@ -27,6 +28,12 @@ $('document').ready(function() {
             })
         } else {
             console.log("unmatced password")
+            error.text('unmatched password')
         }
+    })
+    $('#login').click(function(event) {
+        event.preventDefault();
+        console.log("clicked")
+        window.location.href = '/login'
     })
 })

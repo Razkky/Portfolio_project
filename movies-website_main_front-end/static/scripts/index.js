@@ -69,10 +69,17 @@ $('document').ready(function () {
         const data = await response.json()
         return data.results[0].key
     } 
+    //Login in button
     const btn1 = document.getElementById('btn1')
     btn1.addEventListener('click', function() {
         window.location.href = '/login'
         console.log('click')})
 
-    
+    //signup button
+    $('#btn2').click(function(event) {
+        event.preventDefault();
+        console.log("click");
+        window.location.href = '/sign_up'
+    })
+
 })

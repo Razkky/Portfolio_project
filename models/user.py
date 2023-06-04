@@ -11,7 +11,7 @@ class User(BaseModel, Base):
     __tablename__ = "users"
     name = Column(String(60), nullable=False)
     email = Column(String(60), nullable=False, unique=True)
-    password = Column(String(60), nullable=False)
+    password = Column(String(256), nullable=False)
     username = Column(String(60), nullable=False, unique=True)
-    actors = relationship("Actor", cascade="all, delete")
-    genres = relationship("Genre", cascade="all, delete")
+    actors = relationship("Actor", secondary="user_actor", backref="users_actors", overlaps="actors,users_actors")
+    genres = relationship("Genre", secondary="genre_actor")

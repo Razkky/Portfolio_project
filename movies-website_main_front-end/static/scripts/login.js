@@ -4,6 +4,7 @@ $('document').ready(function () {
         event.preventDefault();
         const email = $('input#email').val();
         const password = $('input#password').val();
+        const error1 = $('#error')
         console.log(email);
         console.log(password);
         data =  {
@@ -35,15 +36,27 @@ $('document').ready(function () {
                         localStorage.setItem("User", JSON.stringify(response2))
                         window.location.href = '/dashboard'
                         
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(errorThrown)
                     }
-                })
+            })
 
+            },
+            error: function(jqXHR, textStatus, errorThrown){
+                if (jqXHR.status == 401){
+                    error1.text('Incorrect Password')
+                    console.log(errorThrown)
+                } else {
+                    error1.text('Incorrect Email')
+                    console.log(errorThrown)
+                }
             }
 
         })
 
     })
-    $('.login_box a').click(function(event) {
+    $('#signup').click(function(event) {
         event.preventDefault();
         window.location.href = "/sign_up"
     })

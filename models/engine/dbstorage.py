@@ -5,6 +5,8 @@ from models.base import Base, BaseModel
 from models.user import User
 from models.actors import Actor
 from models.genre import Genre
+from models.actor_user import ActorUser
+from models.actor_genre import GenreUser
 
 
 class DBStorage:
@@ -59,11 +61,8 @@ class DBStorage:
     def delete(self, obj=None):
         """Delete data from database"""
         if obj:
-            print("deleting")
             DBStorage.__session.delete(obj)
-            print("about to")
             DBStorage.__session.commit()
-            print("deleted")
 
     def reload(self):
         Base.metadata.create_all(DBStorage.__engine)
@@ -71,7 +70,7 @@ class DBStorage:
         DBStorage.__session = scoped_session(Session)()
 
     def get(self, model, email):
-        """Get a model with a particular email"""
+        """Get a model with a particular id"""
         if model == User:
             model = DBStorage.__session.query(model).options(
                     joinedload(User.actors)).options(
@@ -95,7 +94,6 @@ class DBStorage:
         if not model:
             return None
         return model
-
     def close(self):
         """Close current sesssion to database"""
         DBStorage.__session.close()
