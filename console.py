@@ -50,15 +50,29 @@ class MovieCommand(cmd.Cmd):
             print("**Invalid model**")
         else:
             if model in ["Actor", "Genre"]:
-                print(new_dict)
                 user = storage.get_by_id(User, new_dict['user_id'])
-                del new_dict['user_id']
-                new_dict['user_id'] = user.id
-                model = MovieCommand.classes[model](**new_dict)
-                if model == "Actor":
-                    user.actors.append(model)
-                else:
-                    user.genres.append(model)
+                items = storage.all(MovieCommand.classes[model])
+                test = True
+                for item in items.values():
+                    if item.name == new_dict['name']:
+                        model = storage.get_by_id(MovieCommand.classes[model], item.id)
+                        print(model)
+                        if type(model) == MovieCommand.classes['Actor']:
+                            user.actors.append(model)
+                            test = False
+                        else:
+                            print("creating gnere")
+                            user.genres.append(model)
+                            test = False
+
+                if test:
+                    del new_dict['user_id']
+                    new_dict['user_id'] = user.id
+                    model = MovieCommand.classes[model](**new_dict)
+                    if type(model) == MovieCommand.classes['Actor']:
+                        user.actors.append(model)
+                    else:
+                        user.genres.append(model)
             else:
                 model = MovieCommand.classes[model](**new_dict)
                 model.password = generate_password_hash(model.password)
@@ -73,6 +87,7 @@ class MovieCommand(cmd.Cmd):
 
         # Split arguments into list
         new_arg = shlex.split(arg)
+        model = new_arg[0]
         if len(new_arg) < 1:
             print("**Model name is missing**")
         elif new_arg[0] not in MovieCommand.classes.keys():
@@ -80,7 +95,13 @@ class MovieCommand(cmd.Cmd):
         elif len(new_arg) < 2:
             print("**Instance is missing**")
         else:
-            instance = storage.get_by_id(MovieCommand.classes[new_arg[0]], new_arg[1])
+            new_dict ={}
+            for attr in new_arg[1:]:
+                words = attr.split('=')
+                key = words[0]
+                value = words[1].strip("")
+                new_dict[key] = value
+            instance = storage.get_by_id(MovieCommand.classes[model], new_dict['id'])
             if instance:
                 print(instance.to_dict())
             if not instance:
@@ -91,6 +112,13 @@ class MovieCommand(cmd.Cmd):
             usage: destroy Model id"""
         new_arg = shlex.split(arg)
         model = new_arg[0]
+        attrs = new_arg[1:]
+        new_dict = {}
+        for attr in attrs:
+            words = attr.split('=')
+            key = words[0]
+            value = words[1].strip("")
+            new_dict[key] = value
         id = new_arg[1]
         if len(new_arg) < 1:
             print("**Model name is missing**")
@@ -99,12 +127,32 @@ class MovieCommand(cmd.Cmd):
         elif len(new_arg) < 2:
             print("**Instance is missing**")
         else:
-            model = storage.get_by_id(MovieCommand.classes[new_arg[0]], new_arg[1])
-            if model:
+            if model == "Actor":
+                user = storage.get_by_id(User, new_dict['user_id'])
+                actors = user.actors
+                for actor in actors:
+                    if actor.id == int(new_dict['id']):
+                        print("removing actor")
+                        user.actors.remove(actor)
+                        storage.save()
+            if model == "Genre":
+                user = storage.get_by_id(User, new_dict['user_id'])
+                genres = user.genres
+                for genre in genres:
+                    if actor.id == int(new_dict['id']):
+                        print("removing genre")
+                        user.actors.remove(genre)
+                        storage.save()
+
+            else:
+                model = storage.get_by_id(MovieCommand.classes[model], new_dict['id'])
+                for actor in model.actors:
+                    model.actors.remove(actor)
+                for genre in model.genres:
+                    model.genres.remove(genre)
+                print(model)
                 storage.delete(model)
                 storage.save()
-            else:
-                print("**No instance found**")
 
     def do_all(self, arg):
         """Print all Models

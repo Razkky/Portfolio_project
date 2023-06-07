@@ -5,8 +5,6 @@ $('document').ready(function () {
         const email = $('input#email').val();
         const password = $('input#password').val();
         const error1 = $('#error')
-        console.log(email);
-        console.log(password);
         data =  {
             "email": email,
             "password": password
@@ -21,9 +19,7 @@ $('document').ready(function () {
             success: function (response){
                 console.log(response)
                 localStorage.setItem('token', response.token);
-                console.log("storing token")
                 let token = localStorage.getItem('token')
-                console.log(token)
                 $.ajax({
                     type: "GET",
                     headers: {
@@ -31,8 +27,6 @@ $('document').ready(function () {
                     },
                     url: 'http://localhost:5001/api/user/' + email,
                     success: function(response2){
-                        console.log('fetching user')
-                        console.log(response2)
                         localStorage.setItem("User", JSON.stringify(response2))
                         window.location.href = '/dashboard'
                         
@@ -52,9 +46,8 @@ $('document').ready(function () {
                     console.log(errorThrown)
                 }
             }
-
         })
-
+        
     })
     $('#signup').click(function(event) {
         event.preventDefault();

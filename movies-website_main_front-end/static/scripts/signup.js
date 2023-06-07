@@ -13,19 +13,9 @@ $('document').ready(function() {
                 "email": email,
                 "password": password
             };
-            console.log(data);
                 
-            $.ajax({
-                type: "POST",
-                data: JSON.stringify(data),
-                url: "http://localhost:5001/api/users",
-                contentType: "application/json",
-                success: function (response){
-                    console.log(response)
-                    window.location.href = "/login"
-                }
-
-            })
+            localStorage.setItem("Data", JSON.stringify(data))
+            window.location.href = '/profile'
         } else {
             console.log("unmatced password")
             error.text('unmatched password')
@@ -33,7 +23,6 @@ $('document').ready(function() {
     })
     $('#login').click(function(event) {
         event.preventDefault();
-        console.log("clicked")
         window.location.href = '/login'
     })
 })

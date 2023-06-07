@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+body {
+    background: url(../Images/razy1.jpg);
+}
+
+#container {
+    width: 360px;
+    height: 580px;
+    margin: auto;
+    margin-top: 10px;
+    background-color: white;
+    border-radius: 3px;
+    margin-bottom: 10px;
+
+}
+
+form {
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+form label {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+input[type="text"] {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 6px;
+    border: none;
+    border: 2px solid rgb(165, 152, 152);
+    border-radius: 10px;
+    outline: none;
+}
+
+#submit {
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 200px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+input[type="button"]:hover {
+    background: red;
+    color: white;
+    font-size: 20px;
+}
+
+button {
+    width: fit-content;
+    margin-left: 4px;
+}
+input[type="button"] {
+    width: 320px;
+    padding: 5px;
+    margin-top: 25px;
+    height: 35px;
+    cursor: pointer;
+    background: red;
+    color: white;
+    border: none;
+    transition: all 0.3s;
+}

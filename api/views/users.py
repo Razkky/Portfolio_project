@@ -156,10 +156,15 @@ def create_user():
     print("printing data")
     print(data)
     user = User(**data)
-    user.save()
+    print("save user")
     storage.new(user)
     storage.save()
-    return make_response(jsonify(user.to_dict()), 200)
+    print("saved user")
+    user_dict = {
+        "name": user.name,
+        "id": user.id
+    }
+    return make_response(jsonify(user_dict), 200)
 
 @app_view.route('/user/<email>', methods=["PUT"], strict_slashes=False)
 @token_required
@@ -187,6 +192,10 @@ def delete_user(email):
     """Delete a user from database"""
     print(id)
     user = storage.get(User, email)
+    for actor in user.actors:
+        user.actors.remove(actor)
+    for genre in user.genres:
+        user.genres.remove(genre)
     storage.delete(user)
     storage.save()
     return make_response(jsonify({}), 200)

@@ -47,7 +47,6 @@ $('document').ready(function () {
     //Search for a movie
     $('.btn_container button[type="submit"]').click(function(event) {
         event.preventDefault();
-        console.log('clicked')
         const search = $('.btn_container input[type="text"]').val();
         if (search){
             const url = base_url + '/search/movie?api_key=' + api_key + "&query=" + search
@@ -56,9 +55,11 @@ $('document').ready(function () {
                 url: url,
                 success: function(response){
                     showMovies(response.results)
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(errorThrown)
                 }
             })
-            console.log(url)
         } else {
             console.log("Nothing")
         }
@@ -73,12 +74,10 @@ $('document').ready(function () {
     const btn1 = document.getElementById('btn1')
     btn1.addEventListener('click', function() {
         window.location.href = '/login'
-        console.log('click')})
-
+    })
     //signup button
     $('#btn2').click(function(event) {
         event.preventDefault();
-        console.log("click");
         window.location.href = '/sign_up'
     })
 

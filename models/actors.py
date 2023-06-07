@@ -12,4 +12,3 @@ class Actor(BaseModel, Base):
 
     __tablename__ = "actors"
     name = Column(String(60), nullable=True, unique=True)
-    user_actors = relationship("ActorUser", backref="actor", cascade="all, delete")

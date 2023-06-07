@@ -62,6 +62,7 @@ class DBStorage:
         """Delete data from database"""
         if obj:
             DBStorage.__session.delete(obj)
+            print("deleted")
             DBStorage.__session.commit()
 
     def reload(self):
@@ -72,12 +73,20 @@ class DBStorage:
     def get(self, model, email):
         """Get a model with a particular id"""
         if model == User:
-            model = DBStorage.__session.query(model).options(
-                    joinedload(User.actors)).options(
-                    joinedload(User.genres)).filter(model.email == email).one()
+            try:
+                model = DBStorage.__session.query(model).options(
+                        joinedload(User.actors)).options(
+                        joinedload(User.genres)).filter(model.email == email).one()
+            except:
+                print("No row found")
+                model = None
         else:
-            model = DBStorage.__session.query(model).filter(
-                    model.email == email).one()
+            try:
+                model = DBStorage.__session.query(model).filter(
+                        model.email == email).one()
+            except:
+                print("No row found")
+                model = None
         if not model:
             return None
         return model
@@ -85,12 +94,21 @@ class DBStorage:
     def get_by_id(self, model, id):
         """Get a model with a particular id"""
         if model == User:
-            model = DBStorage.__session.query(model).options(
-                    joinedload(User.actors)).options(
-                    joinedload(User.genres)).filter(model.id == id).one()
+            print(id)
+            id = int(id)
+            try:
+                model = DBStorage.__session.query(model).options(
+                        joinedload(User.actors)).options(
+                        joinedload(User.genres)).filter(model.id == id).one()
+            except:
+                print("No row found")
+                model = None
         else:
-            model = DBStorage.__session.query(model).filter(
-                    model.id == id).one()
+            try:
+                model = DBStorage.__session.query(model).filter(
+                        model.id == id).one()
+            except:
+                print("No row found")
         if not model:
             return None
         return model

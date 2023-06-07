@@ -3,63 +3,60 @@ $('document').ready(function() {
     const api_key = "c3c63420556c1043a8d6eac9948f427c";
     const base_url = `https://api.themoviedb.org/3`;
     const img_path = "https://image.tmdb.org/t/p/w500/"
+    const logout = $('#btn2')
+    const user_tag = $('#btn1')
     let user = JSON.parse(localStorage.getItem('User'))
+    const name = user.name
+    console.log(name)
+    user_tag.html(name)
     const actors = []
     const genres = []
-    console.log(user)
-    console.log(user.actors)
     user.actors.forEach(element => {
-        console.log(element.name)
         actors.push(element.name)
     });
     user.genres.forEach(genre => {
-        console.log(genre.name)
         genres.push(genre.name)
     })
-    console.log("Printing actors")
     console.log(actors)
     actors.forEach(actor => {
-        console.log("getting user")
         const acotr_url = `${base_url}/search/person?api_key=${api_key}&query=${actor}`
         fetch(acotr_url).then((response) => response.json()).then((data) => {
-            console.log(data.results[0].id);
+            console.log(data)
+            console.log(data.results[0])
             const actorId = data.results[0].id
             const acotr_movie = `${base_url}/discover/movie?api_key=${api_key}&with_cast=${actorId}`
-            console.log(acotr_movie)
             $.ajax({
                 type: "GET",
                 url: acotr_movie,
                 success: function(response) {
-                    console.log("showing result")
-                    console.log(response.results)
                     showMovies(response.results)
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(errorThrown)
                 }
             })
         })
     })
     genres.forEach(item => {
-        console.log("getting user")
         const genre_url = `${base_url}/genre/movie/list?api_key=${api_key}`
         fetch(genre_url).then((response) => response.json()).then((data) => {
             const genres = data.genres
             const genre = genres.find(genre => genre.name === item)
             const genreId = genre.id
             const genre_movie = `${base_url}/discover/movie?api_key=${api_key}&with_genres=${genreId}`
-            console.log(genre_movie)
             $.ajax({
                 type: "GET",
                 url: genre_movie,
                 success: function(response) {
-                    console.log("showing result")
-                    console.log(response)
-                    console.log(response.results)
                     showMovies(response.results)
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(errorThrown)
                 }
             })
         })
     })
     function showMovies(results) {
-        console.log(results)
         results.forEach(element => {
             const {poster_path, title, overview, vote_average, id, release_date} = element;
             const vido_url = base_url + "/movie/" + id + "/videos?api_key=" + api_key
@@ -89,4 +86,9 @@ $('document').ready(function() {
         const data = await response.json()
         return data.results[0].key
     } 
+    $(logout).click(function(event) {
+        event.preventDefault();
+        localStorage.removeItem('token')
+        window.location.href = '/'
+    })
 })
