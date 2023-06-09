@@ -17,6 +17,7 @@ $('document').ready(function () {
             url: "http://localhost:5001/api/login",
             contentType: "application/json",
             success: function (response){
+                console.log("responding")
                 console.log(response)
                 localStorage.setItem('token', response.token);
                 let token = localStorage.getItem('token')
@@ -27,12 +28,21 @@ $('document').ready(function () {
                     },
                     url: 'http://localhost:5001/api/user/' + email,
                     success: function(response2){
+                        console.log("success")
                         localStorage.setItem("User", JSON.stringify(response2))
                         window.location.href = '/dashboard'
                         
                     },
                     error: function(jqXHR, textStatus, errorThrown){
+                        console.log("invalid token")
                         console.log(errorThrown)
+                        if (jqXHR.status == 401){
+                            error1.text('Incorrect Password')
+                            console.log(errorThrown)
+                        } else {
+                            error1.text('Incorrect Email')
+                            console.log(errorThrown)
+                        }
                     }
             })
 

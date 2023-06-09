@@ -33,31 +33,31 @@ def handle_no_result_found_error(error):
     }
     return jsonify(error_response), 404
 
-# @app.errorhandler(IntegrityError)
-# def handle_integrity_error(error):
-#     # Extract the error message from the exception
-#     error_message = str(error.orig)
+@app.errorhandler(IntegrityError)
+def handle_integrity_error(error):
+    # Extract the error message from the exception
+    error_message = str(error.orig)
 
-#     # Check if it's a duplicate entry error
-#     if 'Duplicate entry' in error_message:
-#         print("duplicate entry")
-#         # Parse the duplicate entry value from the error message
-#         duplicate_entry = error_message.split("'")[1]
+    # Check if it's a duplicate entry error
+    if 'Duplicate entry' in error_message:
+        print("duplicate entry")
+        # Parse the duplicate entry value from the error message
+        duplicate_entry = error_message.split("'")[1]
 
-#         # Create a custom error response
-#         error_response = {
-#             'error': 'Duplicate Entry',
-#             'message': f"The value '{duplicate_entry}' already exists in the database."
-#         }
-#         return jsonify(error_response), 400
+        # Create a custom error response
+        error_response = {
+            'error': 'Duplicate Entry',
+            'message': f"The value '{duplicate_entry}' already exists in the database."
+        }
+        return jsonify(error_response), 400
 
-#     # For other types of IntegrityErrors, you can provide a generic error response
-#     error_response = {
-#         'error': 'Integrity Error',
-#         'message': 'An integrity constraint violation occurred in the database.'
-#     }
-#     print(error_message)
-#     return jsonify(error_response), 400
+    # For other types of IntegrityErrors, you can provide a generic error response
+    error_response = {
+        'error': 'Integrity Error',
+        'message': 'An integrity constraint violation occurred in the database.'
+    }
+    print(error_message)
+    return jsonify(error_response), 400
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port="5001", threaded=True)
