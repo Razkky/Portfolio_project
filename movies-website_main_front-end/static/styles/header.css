@@ -1,0 +1,12 @@
+header h1 {
+    text-align: center;
+}
+.nav_wrapper body {
+    background-color: gray;
+    color: #000;
+}
+
+header body {
+    background-color: gray;
+    color: #000;
+}

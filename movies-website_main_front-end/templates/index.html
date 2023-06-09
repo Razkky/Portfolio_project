@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+  <header class="normal smaller no_animation smaller subtle nav-down">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript"
+             src="static/scripts/index.js?{{ cache_id }}">
+    </script>
+  <link rel="stylesheet" href="static/styles/body.css" />
+  <link rel="stylesheet" href="static/styles/header.css" />
+    <div class="content">
+      <div class="sub_media">
+        <div class="nav_wrapper">
+            <a class="logo" href="/">
+  <title>Movie Zone </title>
+  <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+  <script src="bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1>Movie Zone</h1>
+          
+      <div class="nav-item login-details">
+      </head>
+      <body>
+        <div style="text-align: right;">
+            <header>
+              <ul>
+                <li><img src="static/banner.jpg" alt="logo"></li>
+                <li><a id="login" src="/login">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="contactus.html">Contact_Us</a></li>
+              </ul>
+            </header>
+            
+      </div>
+    </div>
+  </nav>
+  
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Zone</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <section>
+        <div class="movie-list-container">
+            {% for movie in data %}
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster">
+                <h2>{{movie.title}}</h2>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+</body>
+
+</html>
