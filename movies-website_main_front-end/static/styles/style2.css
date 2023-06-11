@@ -1,5 +1,3 @@
-
-    
 .btn_container {
     margin: 0;
     padding: 0;
@@ -261,3 +259,126 @@ form.btn_container button:hover {
     flex-wrap: wrap;
     background: #000;
 }
+
+@media screen  and (max-width: 767px){
+    .container_btn h1 {
+    font-size: 40px;
+    text-align: center;
+}
+#nav_img {
+    object-fit: contain;
+    height: 3vh;
+}
+.container {
+    height: 2vh;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+}
+.container > div > h1 {
+    font-size: 15px;
+    margin-left: 10px;
+    color: red;
+}
+.container > div {
+    display: flex;
+    align-items: center;
+}
+.container > ul {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto;
+}
+
+.nav_menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 5px;
+    list-style-type: none;
+}
+
+.nav_menu a {
+    font-size: 17px;
+    font-weight: 100;
+    color:white;
+    transition: all 400ms ease;
+    
+}
+
+.btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 8px;
+    color: white;
+    background: red;
+    border: 0;
+    border-radius: 1px;
+}
+
+.container_btn {
+    margin-top: 12vh;
+    padding: auto;
+    background: transparent;
+}
+.container_btn h1 {
+	font-size: 35px;
+}
+h2 {
+    text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 30px;
+    color:white;
+}
+h3 {
+    text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 15px;
+    color: white;
+    font-weight: 400;
+}
+h4 {
+   text-align: center;
+    align-items: center;
+    margin:  auto;
+    font-size: 20px;
+    color:white; 
+}
+
+form.btn_container input[type=text] {
+    padding: 15px;
+    width: 500px;
+    height: 15px;
+    font-size: 17px;
+    border-radius: 5px;
+    color: white;
+    border: 2px solid gray;
+    margin: 0;
+    margin-left: 5px;
+    background: transparent;
+    align-items: center;
+}
+form.btn_container button {
+    width: 150px;
+    padding: 15px;
+    color: white;
+    font-weight: bold;
+    background: red;
+    border: 1px solid grey;
+    font-size: 17px;
+    border-left: none;
+    margin-right: 5px;
+    border-radius: 5px;
+    transition: var(--transistion);
+    cursor: pointer;
+
+}
+
+form.btn_container button:hover {
+    background: rgb(212, 18, 18);
+}
+
+}
+
