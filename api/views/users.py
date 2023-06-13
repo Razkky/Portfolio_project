@@ -206,6 +206,14 @@ def reset_request():
     if user:
         token = get_token(user)
 
+@app_view.route('/user/reset_password/<token>', methods=["GET"], strict_slashes=False)
+def reset_password(token):
+    """Reset Password"""
+    data = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
+    if data:
+        email = data.get('email')
+        user = storage.get(User, email)
+    
     
 def get_token(user):
     """Generate token"""
