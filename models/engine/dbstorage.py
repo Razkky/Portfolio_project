@@ -1,4 +1,5 @@
-from os import getenv
+import os
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session, joinedload
 from models.base import Base, BaseModel
@@ -17,10 +18,11 @@ class DBStorage:
 
     def __init__(self):
         """Initialize database engine"""
-        DB_USERNAME = getenv('MOVIE_DB_USER')
-        DB_PASSWORD = getenv('MOVIE_DB_PASSWORD') 
-        DB_HOST = getenv('MOVIE_DB_HOST') 
-        DB_NAME = getenv('MOVIE_DB_NAME')
+        load_dotenv()
+        DB_USERNAME = os.environ.get('MOVIE_DB_USER')
+        DB_PASSWORD = os.environ.get('MOVIE_DB_PASSWORD') 
+        DB_HOST = os.environ.get('MOVIE_DB_HOST') 
+        DB_NAME = os.environ.get('MOVIE_DB_NAME')
         db_url = "mysql+mysqldb://{}:{}@{}:3306/{}".format(
                 DB_USERNAME, DB_PASSWORD, DB_HOST, DB_NAME)
 

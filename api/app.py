@@ -9,7 +9,6 @@ from api.views import app_view
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = "db4e1ce9-7acd-4b12-ad39-7747070331c5"
-key = app.config['SECRET_KEY']
 app.register_blueprint(app_view)
 cors = CORS(app)
 
