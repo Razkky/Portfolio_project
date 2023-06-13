@@ -78,17 +78,13 @@ def login():
     email = request.json.get('email')
     password = request.json.get('password')
     user = storage.get(User, email)
+    print(user)
     if not user:
         print("no user")
         return make_response(jsonify({"error": "Invalid email or password"}))
     if check_password_hash(user.password, password):
-        data = {
-            'email': user.email,
-            'exp': datetime.utcnow() + timedelta(minutes=30)
-        }
-        print(data)
-        token = jwt.encode(data, os.environ.get('SECRET_KEY'))
-        decode_data = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
+        token = get_token(user)
+        print(token)
         return make_response(jsonify({'token': token}), 200)
 
     return make_response(jsonify({"error": "Invalid username or Password"}), 401)
@@ -201,3 +197,21 @@ def delete_user(email):
     storage.delete(user)
     storage.save()
     return make_response(jsonify({}), 200)
+
+@app_view.route('/user/reset_password', methods=['GET'], strict_slashes=False)
+def reset_request():
+    """Send mail to user to reset password"""
+    email = request.json.get('email')
+    user = storage.get(User, email)
+    if user:
+        token = get_token(user)
+
+    
+def get_token(user):
+    """Generate token"""
+    data = {
+        'email': user.email,
+        'exp': datetime.utcnow() + timedelta(minutes=30)
+    }
+    token = jwt.encode(data, os.environ.get('SECRET_KEY'))
+    return token
