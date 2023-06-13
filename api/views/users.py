@@ -6,6 +6,8 @@ from functools import wraps
 from datetime import datetime, timedelta
 from sqlalchemy.orm import joinedload
 from uuid import uuid4
+import os
+from dotenv import load_dotenv
 import jwt
 from api.views import app_view
 from models import storage
@@ -22,7 +24,7 @@ def token_required(f):
             return make_response(jsonify("error", "Token is missing"))
 
         try:
-            data = jwt.decode(token, "db4e1ce9-7acd-4b12-ad39-7747070331c5", algorithms=["HS256"])
+            data = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
             email = data.get('email')
             user = storage.get(User, email)
         except jwt.exceptions.DecodeError:
@@ -85,8 +87,8 @@ def login():
             'exp': datetime.utcnow() + timedelta(minutes=30)
         }
         print(data)
-        token = jwt.encode(data, "db4e1ce9-7acd-4b12-ad39-7747070331c5")
-        decode_data = jwt.decode(token, "db4e1ce9-7acd-4b12-ad39-7747070331c5", algorithms=["HS256"])
+        token = jwt.encode(data, os.environ.get('SECRET_KEY'))
+        decode_data = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
         return make_response(jsonify({'token': token}), 200)
 
     return make_response(jsonify({"error": "Invalid username or Password"}), 401)
