@@ -36,6 +36,11 @@ def forget():
     """Forget password page"""
     return render_template('forget_password.html')
 
+@app.route('/reset_password/<token>', methods=['GET'], strict_slashes=False)
+def reset(token):
+    """Reset password page"""
+    return render_template('reset_password.html', token=token)
+
 if __name__=="__main__":
     """Starts up flask application"""
     app.run(debug=True)

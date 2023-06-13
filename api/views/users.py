@@ -1,5 +1,6 @@
 """Return a json object of users"""
 from flask import jsonify, make_response, abort, request
+from flask_mail import Message
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from functools import wraps
@@ -9,6 +10,8 @@ from uuid import uuid4
 import os
 from dotenv import load_dotenv
 import jwt
+from api.app import app, mail
+from api.views import app_view
 from api.views import app_view
 from models import storage
 from models.user import User
@@ -198,22 +201,32 @@ def delete_user(email):
     storage.save()
     return make_response(jsonify({}), 200)
 
-@app_view.route('/user/reset_password', methods=['GET'], strict_slashes=False)
+@app_view.route('/user/reset_password', methods=['POST'], strict_slashes=False)
 def reset_request():
     """Send mail to user to reset password"""
     email = request.json.get('email')
     user = storage.get(User, email)
     if user:
-        token = get_token(user)
+        send_email(user)
+        return make_response(jsonify({'Success': 'Email sent'}))
+    else:
+        return make_response(jsonify({'Error': 'Invalid user'}))
 
 @app_view.route('/user/reset_password/<token>', methods=["GET"], strict_slashes=False)
 def reset_password(token):
     """Reset Password"""
-    data = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
-    if data:
-        email = data.get('email')
+    decoded_token = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
+    if decoded_token:
+        email = decoded_token.get('email')
+        password = request.json.get('password')
         user = storage.get(User, email)
-    
+        if user:
+            user.password = generate_password_hash(password)
+            user.save()
+            storage.save()
+            return make_response(jsonify({'Success': 'password updated'}))
+        else:
+            return make_response(jsonify({'Error': 'Invalid User or token expired'}))
     
 def get_token(user):
     """Generate token"""
@@ -223,3 +236,13 @@ def get_token(user):
     }
     token = jwt.encode(data, os.environ.get('SECRET_KEY'))
     return token
+
+def send_email(user):
+    """Send an email to a user"""
+    print("sending mail")
+    token = get_token(user)
+    msg = Message('Password Reset Request', sender='muhammadjamiuabdulrazak@gmail.com', recipients=[user.email])
+    msg.body = f'''To reset your password, visit the following link: http://localhost:5000/reset_password/{token}
+    if you did not make this request simply ignore this email and no changes will be made to your account
+    '''
+    mail.send(msg)

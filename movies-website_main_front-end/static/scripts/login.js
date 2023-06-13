@@ -63,4 +63,8 @@ $('document').ready(function () {
         event.preventDefault();
         window.location.href = "/sign_up"
     })
+    $('#forget_pw').click(function(event) {
+        event.preventDefault();
+        window.location.href = '/forget_password'
+    })
 })
