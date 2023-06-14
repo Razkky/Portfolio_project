@@ -6,9 +6,9 @@ $('document').ready(function() {
     const logout = $('#btn2')
     const user_tag = $('#btn1')
     let user = JSON.parse(localStorage.getItem('User'))
-    const name = user.name
-    console.log(name)
-    user_tag.html(name)
+    const username = user.username
+    console.log(username)
+    user_tag.html(username)
     const actors = []
     const genres = []
     user.actors.forEach(element => {
@@ -90,5 +90,27 @@ $('document').ready(function() {
         event.preventDefault();
         localStorage.removeItem('token')
         window.location.href = '/'
+    })
+
+    $('.btn_container button[type="submit"]').click(function(event) {
+        event.preventDefault();
+        const search = $('.btn_container input[type="text"]').val();
+        console.log(search)
+        if (search){
+            const url = base_url + '/search/movie?api_key=' + api_key + "&query=" + search
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(response){
+                    section.innerHTML = ""
+                    showMovies(response.results)
+                },
+                error: function(jqXHR, textStatus, errorThrown){
+                    console.log(errorThrown)
+                }
+            })
+        } else {
+            console.log("Nothing")
+        }
     })
 })
