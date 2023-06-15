@@ -10,11 +10,14 @@ from uuid import uuid4
 import os
 from dotenv import load_dotenv
 import jwt
-from api.app import app, mail
 from api.views import app_view
 from api.views import app_view
 from models import storage
 from models.user import User
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 
 
 def token_required(f):
@@ -212,9 +215,10 @@ def reset_request():
     else:
         return make_response(jsonify({'Error': 'Invalid user'}))
 
-@app_view.route('/user/reset_password/<token>', methods=["GET"], strict_slashes=False)
+@app_view.route('/user/reset_password/<token>', methods=["POST"], strict_slashes=False)
 def reset_password(token):
     """Reset Password"""
+    print("changing password")
     decoded_token = jwt.decode(token, os.environ.get('SECRET_KEY'), algorithms=["HS256"])
     if decoded_token:
         email = decoded_token.get('email')
@@ -240,9 +244,29 @@ def get_token(user):
 def send_email(user):
     """Send an email to a user"""
     print("sending mail")
+    sender_email = 'moviezonemovies@outlook.com'
+    sender_password = os.environ.get('PASSWORD') 
+    recipient_email = user.email
     token = get_token(user)
-    msg = Message('Password Reset Request', sender='muhammadjamiuabdulrazak@gmail.com', recipients=[user.email])
-    msg.body = f'''To reset your password, visit the following link: http://localhost:5000/reset_password/{token}
-    if you did not make this request simply ignore this email and no changes will be made to your account
-    '''
-    mail.send(msg)
+    msg = MIMEMultipart()
+    msg['FROM'] = sender_email
+    msg['TO'] = recipient_email
+    msg['SUBJECT'] = "Reset Password"
+    text = f'''To reset your password, visit the following link: http://localhost:5000/reset_password/{token}
+    if you did not make this request simply ignore this email and no changes will be made to your account'''
+    msg.attach(MIMEText(text, 'plain'))
+    smtp_server = 'smtp-mail.outlook.com'
+    smtp_port = 587
+    server = smtplib.SMTP(smtp_server, smtp_port)
+    try:
+        #connects to server to send mails
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.sendmail(sender_email, recipient_email, msg.as_string())
+        print("email sent")
+    except smtplib.SMTPException as e:
+        print(str(e))
+        print("email not sent")
+    finally:
+        server.quit()
+

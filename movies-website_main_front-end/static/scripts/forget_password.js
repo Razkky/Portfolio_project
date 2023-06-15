@@ -1,5 +1,6 @@
 $('document').ready(function() {
     console.log('loaded')
+    const notice = $('#notice')
     $('input[type="button"]').click(function(event) {
         event.preventDefault();
         const email = $('input#email').val();
@@ -13,6 +14,7 @@ $('document').ready(function() {
             contentType: "application/json",
             success: function(response) {
                 console.log(response)
+                notice.text("A Reset Password Mail has been sent to your mail")
             },
             error: function(jqXHR, textStatus, errorThrown){
                 console.log(errorThrown)

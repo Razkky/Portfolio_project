@@ -80,5 +80,11 @@ $('document').ready(function () {
         event.preventDefault();
         window.location.href = '/sign_up'
     })
+    
 
+})
+
+window.addEventListener('scroll', () => {
+    document.querySelector('container').classList.toggle 
+    ('window-scroll', window.scrollY > 0);
 })

@@ -41,6 +41,11 @@ body {
     margin: 0;
 }
 
+.windown-scroll {
+    background: red;
+    box-shadow: 1rem 2rem;
+}
+
 .container_btn h1 {
     font-size: 55px;
     text-align: center;
@@ -382,3 +387,56 @@ form.btn_container button:hover {
 
 }
 
+footer {
+    background: var(--color-bg1);
+    padding-top: 4rem;
+    font-size: 0.9rem;
+}
+
+.footer_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) ;
+    gap: 4rem;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: justify;
+    
+
+    
+}
+.footer_container > div h4 {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+
+}
+.footer_1 p {
+    margin: 0 0 2rem;
+}
+
+footer ul li {
+    margin-bottom: 0.7rem;
+    text-align: left;
+    list-style: none;
+}
+
+footer ul li a {
+    color: white;
+    
+}
+
+footer ul li a:hover {
+    text-decoration: underline;
+    color: red;
+}
+.footer__socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.footer__copyright {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--color-bg2);}
