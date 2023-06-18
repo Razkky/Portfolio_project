@@ -1,5 +1,30 @@
 $('document').ready(function() {
-    console.log("readys")
+    let actors_names = []
+    let genre_names = []
+    let actor_div = $('#actors_name')
+    let genre_div = $('#genres_name')
+    //add individual actor to list of actors
+    $('.actors').click(function(event) {
+        event.preventDefault();
+        let actor = $('#actors')
+        console.log(actor.val())
+        actors_names.push(actor.val())
+        let button = $("<button>").text(actor.val())
+        actor_div.append(button)
+        actor.val('')
+    })
+
+    //add individual genres to list of genres
+    $('.genres').click(function(event) {
+        event.preventDefault();
+        let genre = $('#genres')
+        console.log(genre.val())
+        genre_names.push(genre.val())
+        let button = $('<button>').text(genre.val())
+        genre_div.append(button)
+        genre.val('')
+    })
+    // submit user details to backend database
     $('#submit').click(function(event) {
         event.preventDefault();
         const data = JSON.parse(localStorage.getItem('Data'))

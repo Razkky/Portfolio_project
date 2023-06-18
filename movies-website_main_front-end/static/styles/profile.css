@@ -28,8 +28,11 @@ form {
 
 form label {
     display: flex;
-    margin-top: 25px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     font-size: 16px;
+    font-weight: bold;
+    font-size: x-large;
 }
 
 form input {
@@ -57,4 +60,35 @@ input[type="button"]:hover {
     background: red;
     color: white;
     font-size: 20px;
+}
+
+#actors_name {
+    display: flexbox ;
+    margin-bottom: 10px;
+    justify-content: space-between;
+}
+
+#genres_name {
+    display: flexbox;
+    margin-bottom: 10px;
+}
+
+.actors {
+    margin-top: 10px;
+    width: 50px;
+}
+
+.genres {
+    margin-top: 10px;
+    width: 50px;
+}
+
+#actors_name button {
+    margin-left: 5px;
+    margin-bottom: 4px;
+}
+
+#genres_name button {
+    margin-left: 5px;
+    margin-bottom: 4px;
 }
