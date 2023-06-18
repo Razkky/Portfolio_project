@@ -34,7 +34,6 @@ def create_actor(user_id):
     print(f"printing json data {data}")
     user = storage.get_by_id(User, user_id)
     actors = storage.all(Actor)
-    print(f"printing all actors {actors}")
     test = True
     print("creating actor")
     if data['name']:
