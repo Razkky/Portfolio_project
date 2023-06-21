@@ -388,14 +388,16 @@ form.btn_container button:hover {
 }
 
 footer {
-    background: var(--color-bg1);
+    /* background: var(--color-bg1); */
+    background: rgb(17, 13, 13);
     padding-top: 4rem;
     font-size: 0.9rem;
 }
 
 .footer_container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr) ;
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr) ; */
+    display: flex;
     gap: 4rem;
     margin-left: 50px;
     margin-right: 50px;
@@ -419,7 +421,13 @@ footer ul li {
     list-style: none;
 }
 
-footer ul li a {
+footer div  {
+    color: white;
+    margin-bottom: 0.7rem;
+    
+}
+
+footer a  {
     color: white;
     
 }
@@ -437,6 +445,7 @@ footer ul li a:hover {
 
 .footer__copyright {
     text-align: center;
-    margin-top: 4rem;
+    color: black;
+    font-weight: bold;
     padding: 1.2rem 0;
     border-top: 1px solid var(--color-bg2);}

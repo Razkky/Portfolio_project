@@ -88,6 +88,7 @@ $('document').ready(function() {
     } 
     $(logout).click(function(event) {
         event.preventDefault();
+        console.log('clicked')
         localStorage.removeItem('token')
         window.location.href = '/'
     })

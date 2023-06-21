@@ -154,21 +154,27 @@ def create_user():
     # Get json data from user
     data = request.get_json()
     print(data)
-    password = data['password']
-    hashed_password = generate_password_hash(password)
-    data['password'] = hashed_password
-    print("printing data")
-    print(data)
-    user = User(**data)
-    print("save user")
-    storage.new(user)
-    storage.save()
-    print("saved user")
-    user_dict = {
-        "name": user.name,
-        "id": user.id
-    }
-    return make_response(jsonify(user_dict), 200)
+
+    for value in data.values():
+        if len(value) <= 0:
+            print("No input")
+            abort(404, "missing fields")
+    else:
+        password = data['password']
+        hashed_password = generate_password_hash(password)
+        data['password'] = hashed_password
+        print("printing data")
+        print(data)
+        user = User(**data)
+        print("save user")
+        storage.new(user)
+        storage.save()
+        print("saved user")
+        user_dict = {
+            "name": user.name,
+            "id": user.id
+        }
+        return make_response(jsonify(user_dict), 200)
 
 @app_view.route('/user/<email>', methods=["PUT"], strict_slashes=False)
 @token_required

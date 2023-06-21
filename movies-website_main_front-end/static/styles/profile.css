@@ -92,3 +92,11 @@ input[type="button"]:hover {
     margin-left: 5px;
     margin-bottom: 4px;
 }
+#movie_names {
+    display: flexbox;
+}
+
+#movie_names button {
+    margin-top: 5px;
+    margin-left: 5px;
+}

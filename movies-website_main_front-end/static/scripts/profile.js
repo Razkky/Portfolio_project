@@ -4,6 +4,9 @@ $('document').ready(function() {
     let actor_div = $('#actors_name')
     let genre_div = $('#genres_name')
     //add individual actor to list of actors
+    $('button').click(function(event) {
+        event.preventDefault()
+    })
     $('.actors').click(function(event) {
         event.preventDefault();
         let actor = $('#actors')
