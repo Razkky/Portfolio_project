@@ -1,6 +1,5 @@
 """Return a json object of users"""
 from flask import jsonify, make_response, abort, request
-from flask_mail import Message
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from functools import wraps
